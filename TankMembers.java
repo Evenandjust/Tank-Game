@@ -1,8 +1,8 @@
-package tankGameVersion3;
+package tankGame;
 
 /**
  * @author even_and_just
- * @date 3/15/2016
+ * @date 3/14/2016
  * @function Members of Tank Game
  */
 
@@ -183,7 +183,6 @@ class MyTank extends Tank{
 
 class EnemyTank extends Tank implements Runnable{
     
-//    int times = 0;
     Vector<Shoot> ss = new Vector<Shoot>();
     
     public EnemyTank(int x, int y){
@@ -243,41 +242,6 @@ class EnemyTank extends Tank implements Runnable{
                 }
                 break;
             }
-            
-//            this.times ++;
-//            
-//            if(times %2 == 0){
-//                if(isAlive){
-//                    
-//                    if(ss.size()<2){
-//                        Shoot s = null;
-//                        
-//                        switch(direct){
-//                        case 0:
-//                            s = new Shoot(x+10,y,0);
-//                            ss.add(s);
-//                            break;
-//                        case 1:
-//                            s = new Shoot(x+30,y+10,1);
-//                            ss.add(s);
-//                            break;
-//                        case 2:
-//                            s = new Shoot(x+10,y+30,2);
-//                            ss.add(s);
-//                            break;
-//                        case 3:
-//                            s = new Shoot(x,y+10,3);
-//                            ss.add(s);
-//                            break;
-//                        }
-//                        
-//                        // Activate the bullet
-//                        Thread t = new Thread(s);
-//                        t.start();
-//                    }
-//                }
-//            }
-            
             
             this.direct = (int)(Math.random()*4);
             
