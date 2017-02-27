@@ -1,10 +1,10 @@
 /**
  * @author even_and_just
  * @date 3/14/2016
- * @function Tank Game 1.0 Version
+ * @function Tank Game Simplified Version
  */
 
-package tankGameVersion3;
+package tankGame;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -40,7 +40,7 @@ public class TankGame3 extends JFrame{
 }
 
 class MyPanel extends JPanel implements KeyListener,Runnable{
-    // Define one my tank
+    // Define my tank
     MyTank mytank = null;
     
     // Define enemy tanks
@@ -89,11 +89,6 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
         }catch(Exception e){
             e.printStackTrace();
         }
-        
-//        img1 = Toolkit.getDefaultToolkit().getImage(Panel.class.getResource("/bomb1.png"));
-//        img2 = Toolkit.getDefaultToolkit().getImage(Panel.class.getResource("/bomb1.png"));
-//        img3 = Toolkit.getDefaultToolkit().getImage(Panel.class.getResource("/bomb1.png"));
-        
     }
     
     public void paint(Graphics g){
@@ -306,20 +301,6 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
                 e.printStackTrace();
             }
             
-//            // Determine whether the bullet does hit the enemy tank
-//            for(int i=0;i<mytank.ss.size();i++){
-//                
-//                Shoot myShoot = mytank.ss.get(i);
-//                if(myShoot.isAlive){
-//                    
-//                    for(int j=0;j<ets.size();j++){
-//                        EnemyTank et = ets.get(j);
-//                        if(et.isAlive){
-//                            this.hitTank(myShoot, et);
-//                        }
-//                    }
-//                }
-//            }
             this.hitEnemyTank();
             this.hitMine();
             
