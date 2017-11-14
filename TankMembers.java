@@ -49,7 +49,7 @@ class Shoot implements Runnable{
             }
             
             // Determine whether the bullet hits the border of the window
-            if(x<0||x>500||y<0||y>430){
+            if(x < 0 || x > 500 || y < 0 || y > 430){
                 this.isAlive = false;
                 break;
             }
@@ -137,19 +137,19 @@ class MyTank extends Tank{
         
         switch(this.direct){
         case 0:
-            s = new Shoot(x+10, y, 0);
+            s = new Shoot(x + 10, y, 0);
             ss.add(s);
             break;
         case 1:    
-            s = new Shoot(x+30, y+10, 1);
+            s = new Shoot(x + 30, y + 10, 1);
             ss.add(s);
             break;
         case 2:
-            s = new Shoot(x+10, y+30, 2);
+            s = new Shoot(x + 10, y + 30, 2);
             ss.add(s);
             break;
         case 3:
-            s = new Shoot(x, y+10, 3);
+            s = new Shoot(x, y + 10, 3);
             ss.add(s);
             break;
         }
@@ -159,22 +159,22 @@ class MyTank extends Tank{
     }
     
     public void moveUp(){
-        if(y>0){
+        if(y > 0){
             this.y -= speed; 
         }
     }
     public void moveRight(){
-        if(x<500-30){
+        if(x < 500 - 30){
             this.x += speed; 
         }
     }
     public void moveDown(){
-        if(y<430-50){
+        if(y < 430 - 50){
             this.y += speed; 
         }
     }
     public void moveLeft(){
-        if(x>0){
+        if(x > 0){
             this.x -= speed; 
         }
     }
@@ -194,8 +194,8 @@ class EnemyTank extends Tank implements Runnable{
             
             switch(this.direct){
             case 0:
-                for(int i=0;i<30;i++){
-                    if(y>0){
+                for(int i = 0; i < 30; i++){
+                    if(y > 0){
                         y -= speed;
                     }
                     try {
@@ -206,8 +206,8 @@ class EnemyTank extends Tank implements Runnable{
                 }
                 break;
             case 1:
-                for(int i=0;i<30;i++){
-                    if(x<500-30){
+                for(int i = 0; i < 30; i++){
+                    if(x < 500 - 30){
                         x += speed;
                     }
                     try {
@@ -218,8 +218,8 @@ class EnemyTank extends Tank implements Runnable{
                 }
                 break;
             case 2:
-                for(int i=0;i<30;i++){
-                    if(y<430-50){
+                for(int i = 0; i < 30; i++){
+                    if(y < 430 - 50){
                         y += speed;
                     }
                     try {
@@ -230,8 +230,8 @@ class EnemyTank extends Tank implements Runnable{
                 }
                 break;
             case 3:
-                for(int i=0;i<30;i++){
-                    if(x>0){
+                for(int i = 0; i < 30; i++){
+                    if(x > 0){
                         x -= speed;
                     }
                     try {
@@ -267,7 +267,7 @@ class Bomb{
     }
     
     public void lifeDown(){
-        if(life>0){
+        if(life > 0){
             life --;
         }else{
             this.isAlive = false;
