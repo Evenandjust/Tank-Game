@@ -59,10 +59,10 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
         mytank = new MyTank(300,100);  // Original location of my tank
         
         // Initialize enmey tanks
-        for(int i=0;i<etSize;i++){
+        for(int i = 0; i < etSize; i++){
             
             // Create an enemy tank object
-            EnemyTank et = new EnemyTank((i+1)*50,0);
+            EnemyTank et = new EnemyTank((i + 1) * 50,0);
             et.setColor(0);
             et.setDirect(2);
             
@@ -74,7 +74,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
             t.start();
             
             // Give the enemy tank one bullet
-            Shoot s = new Shoot(et.x+10,et.y+30,2);
+            Shoot s = new Shoot(et.x + 10, et.y + 30, 2);
             et.ss.add(s);
             
             Thread t2 = new Thread(s);
@@ -97,12 +97,12 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
         g.fillRect(0, 0, 500, 430);
         
         // Draw my tank
-        if(mytank.isAlive==true){
-            this.drawTank(mytank.getX(),mytank.getY(),g,this.mytank.direct,1);
+        if(mytank.isAlive == true){
+            this.drawTank(mytank.getX(), mytank.getY(), g, this.mytank.direct, 1);
         }
         
         // Draw each bullet in ss
-        for(int i=0;i<this.mytank.ss.size();i++){
+        for(int i = 0; i < this.mytank.ss.size(); i++){
             
             Shoot myShoot = mytank.ss.get(i);
             
@@ -120,28 +120,28 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
         }
         
         // Draw bombs
-        for(int i=0;i<bms.size();i++){
+        for(int i = 0; i < bms.size(); i++){
             Bomb bm = bms.get(i);
-            if(bm.life>6){
+            if(bm.life > 6){
                 g.drawImage(img1, bm.x, bm.y, 30, 30, this);
-            }if(bm.life>3){
+            }if(bm.life > 3){
                 g.drawImage(img1, bm.x, bm.y, 30, 30, this);
             }else{
                 g.drawImage(img1, bm.x, bm.y, 30, 30, this);
             }
             bm.lifeDown();
-            if(bm.life==0){
+            if(bm.life == 0){
                 bms.remove(bm);
             }
         }
         
         
         // Draw enemy tanks
-        for(int i=0;i<ets.size();i++){
+        for(int i = 0; i < ets.size(); i++){
             EnemyTank et = ets.get(i);
             if(et.isAlive){
                 this.drawTank(et.getX(), et.getY(), g, et.getDirect(), 0);
-                for(int j=0;j<et.ss.size();j++){
+                for(int j = 0; j < et.ss.size(); j++){
                     Shoot enemyShoot = et.ss.get(j);
                     if(enemyShoot.isAlive){
                         g.draw3DRect(enemyShoot.x, enemyShoot.y, 1, 1, false);
@@ -156,10 +156,10 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
     
     // Determine whether mytank is hit by enemy tanks
     public void hitMine(){
-        for(int i=0;i<ets.size();i++){
+        for(int i = 0; i < ets.size(); i++){
             EnemyTank et = ets.get(i);
             
-            for(int j=0;j<et.ss.size();j++){
+            for(int j = 0; j < et.ss.size(); j++){
                 Shoot enemyShoot = et.ss.get(j);
                 if(enemyShoot.isAlive){
                     this.hitTank(enemyShoot, mytank);
@@ -170,12 +170,12 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
     
     // Determine whether my bullet does hit the enemy tanks
     public void hitEnemyTank(){
-        for(int i=0;i<mytank.ss.size();i++){
+        for(int i = 0; i < mytank.ss.size(); i++){
             
             Shoot myShoot = mytank.ss.get(i);
             if(myShoot.isAlive){
                 
-                for(int j=0;j<ets.size();j++){
+                for(int j = 0; j < ets.size(); j++){
                     EnemyTank et = ets.get(j);
                     if(et.isAlive){
                         this.hitTank(myShoot, et);
@@ -192,7 +192,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
         switch(et.direct){
         case 0:
         case 2:
-            if(s.x>=et.x && s.x<=et.x+20 && s.y>=et.y && s.y<=et.y+30){
+            if(s.x >= et.x && s.x <= et.x + 20 && s.y >= et.y && s.y <= et.y + 30){
                 s.isAlive = false;
                 et.isAlive = false;
                 Bomb bm = new Bomb(et.x,et.y);
@@ -200,7 +200,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
             }
         case 1:
         case 3:
-            if(s.x>=et.x && s.x<=et.x+30 && s.y>=et.y && s.y<=et.y+20){
+            if(s.x >= et.x && s.x <= et.x + 30 && s.y >= et.y && s.y <= et.y + 20){
                 s.isAlive = false;
                 et.isAlive = false;
                 Bomb bm = new Bomb(et.x,et.y);
@@ -228,31 +228,31 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
         case 0:
             // Draw my tank
             g.fill3DRect(x, y, 5, 30, false);
-            g.fill3DRect(x+5, y+5, 10, 20, false);
-            g.fill3DRect(x+15, y, 5, 30, false);
-            g.fillOval(x+6, y+11, 8, 8);
-            g.drawLine(x+10, y, x+10, y+15);
+            g.fill3DRect(x + 5, y + 5, 10, 20, false);
+            g.fill3DRect(x + 15, y, 5, 30, false);
+            g.fillOval(x + 6, y + 11, 8, 8);
+            g.drawLine(x + 10, y, x + 10, y + 15);
             break;
         case 1:
             g.fill3DRect(x, y, 30, 5, false);
-            g.fill3DRect(x+5, y+5, 20, 10, false);
-            g.fill3DRect(x, y+15, 30, 5, false);
-            g.fillOval(x+11, y+6, 8, 8);
-            g.drawLine(x+15, y+10, x+30, y+10);
+            g.fill3DRect(x + 5, y + 5, 20, 10, false);
+            g.fill3DRect(x, y + 15, 30, 5, false);
+            g.fillOval(x + 11, y + 6, 8, 8);
+            g.drawLine(x + 15, y + 10, x + 30, y + 10);
             break;
         case 2:
             g.fill3DRect(x, y, 5, 30, false);
-            g.fill3DRect(x+5, y+5, 10, 20, false);
-            g.fill3DRect(x+15, y, 5, 30, false);
-            g.fillOval(x+6, y+11, 8, 8);
-            g.drawLine(x+10, y+15, x+10, y+30);
+            g.fill3DRect(x + 5, y + 5, 10, 20, false);
+            g.fill3DRect(x + 15, y, 5, 30, false);
+            g.fillOval(x + 6, y + 11, 8, 8);
+            g.drawLine(x + 10, y + 15, x + 10, y + 30);
             break;
         case 3:
             g.fill3DRect(x, y, 30, 5, false);
-            g.fill3DRect(x+5, y+5, 20, 10, false);
-            g.fill3DRect(x, y+15, 30, 5, false);
-            g.fillOval(x+11, y+6, 8, 8);
-            g.drawLine(x, y+10, x+15, y+10);
+            g.fill3DRect(x + 5, y + 5, 20, 10, false);
+            g.fill3DRect(x, y + 15, 30, 5, false);
+            g.fillOval(x + 11, y + 6, 8, 8);
+            g.drawLine(x, y + 10, x + 15, y + 10);
             break;
         }
     }
@@ -263,25 +263,25 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 
     public void keyPressed(KeyEvent e) {
         // TODO Auto-generated method stub
-        if(e.getKeyCode()==KeyEvent.VK_UP){
+        if(e.getKeyCode() == KeyEvent.VK_UP){
             this.mytank.setDirect(0);
             this.mytank.moveUp();
-        }else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+        }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             this.mytank.setDirect(1);
             this.mytank.moveRight();
-        }else if(e.getKeyCode()==KeyEvent.VK_DOWN){
+        }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
             this.mytank.setDirect(2);
             this.mytank.moveDown();
-        }else if(e.getKeyCode()==KeyEvent.VK_LEFT){
+        }else if(e.getKeyCode() == KeyEvent.VK_LEFT){
             this.mytank.setDirect(3);
             this.mytank.moveLeft();
         }
         
         // Shoot
-        if(e.getKeyCode()==KeyEvent.VK_SPACE){
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
             
             // Control the frequency of shooting
-            if(this.mytank.ss.size()<5){
+            if(this.mytank.ss.size() < 5){
                 this.mytank.shootEnemy();
             }
         }
@@ -290,7 +290,6 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 
     public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
-        
     }
 
     public void run() {
@@ -305,30 +304,28 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
             this.hitMine();
             
             // Determine whether add new bullet to enemy tanks.
-            for(int i=0;i<ets.size();i++){
+            for(int i = 0; i < ets.size(); i++){
                 EnemyTank et = ets.get(i);
                 if(et.isAlive){
-                    
-                    if(et.ss.size()<2){
+                    if(et.ss.size() < 2){
                         Shoot s = null;
-                        
                         switch(et.direct){
-                        case 0:
-                            s = new Shoot(et.x+10,et.y,0);
-                            et.ss.add(s);
-                            break;
-                        case 1:
-                            s = new Shoot(et.x+30,et.y+10,1);
-                            et.ss.add(s);
-                            break;
-                        case 2:
-                            s = new Shoot(et.x+10,et.y+30,2);
-                            et.ss.add(s);
-                            break;
-                        case 3:
-                            s = new Shoot(et.x,et.y+10,3);
-                            et.ss.add(s);
-                            break;
+                            case 0:
+                                s = new Shoot(et.x + 10, et.y, 0);
+                                et.ss.add(s);
+                                break;
+                            case 1:
+                                s = new Shoot(et.x + 30, et.y + 10, 1);
+                                et.ss.add(s);
+                                break;
+                            case 2:
+                                s = new Shoot(et.x + 10, et.y + 30, 2);
+                                et.ss.add(s);
+                                break;
+                            case 3:
+                                s = new Shoot(et.x, et.y + 10, 3);
+                                et.ss.add(s);
+                                break;
                         }
                         
                         // Activate the bullet
@@ -343,22 +340,5 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
         
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
